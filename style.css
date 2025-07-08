@@ -2642,6 +2642,7 @@ body {
 }
 
 .floating-success {
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -2657,11 +2658,10 @@ body {
     text-align: center;
     min-width: 300px;
     max-width: 90vw;
-    display: none;
     border: 2px solid #1e40af;
 }
 .floating-success.active {
-    display: block;
+    display: block !important;
 }
 
 @media (max-width: 900px) {
