@@ -1,5 +1,3 @@
-// Main JavaScript functionality for STI College Lucena SSC website
-
 // Utility functions
 function formatDate(dateString) {
     const date = new Date(dateString);
@@ -108,7 +106,7 @@ function createOfficerCard(officer) {
             <!-- Description overlay that slides in on hover -->
             <div class="council-member-description-overlay">
                 <p class="council-member-description">${officer.description}</p>
-                <a href="mailto:${officer.email}" class="council-member-email">Contact</a>
+                <a href="${officer.facebook}" class="council-member-email" target="_blank" rel="noopener">Facebook</a>
             </div>
         </div>
     `;
