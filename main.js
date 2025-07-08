@@ -1,5 +1,3 @@
-// Main JavaScript functionality for STI College Lucena SSC website
-
 // Utility functions
 function formatDate(dateString) {
     const date = new Date(dateString);
@@ -1438,7 +1436,7 @@ if (document.readyState === 'loading') {
     highlightActiveNavTab();
 } 
 
-// Contact form floating success handler (AJAX version)
+// Contact form floating success handler
 const contactForm = document.querySelector('.contact-form');
 const floatingSuccess = document.querySelector('.floating-success');
 if (contactForm && floatingSuccess) {
@@ -1452,21 +1450,24 @@ if (contactForm && floatingSuccess) {
         })
         .then(response => {
             if (response.ok) {
+                floatingSuccess.textContent = "Thank you for reaching out! We'll get back to you soon.";
                 floatingSuccess.classList.add('active');
-                contactForm.style.display = 'none';
-                setTimeout(function() {
-                    floatingSuccess.classList.remove('active');
-                    contactForm.reset();
-                    contactForm.style.display = '';
-                }, 4000);
+                // Optionally reset the form
+                contactForm.reset();
             } else {
                 response.json().then(data => {
-                    alert(data.error || 'There was a problem sending your message.');
+                    floatingSuccess.textContent = data.error || 'There was a problem sending your message.';
+                    floatingSuccess.classList.add('active');
                 });
             }
         })
         .catch(() => {
-            alert('There was a problem sending your message.');
+            floatingSuccess.textContent = 'There was a problem sending your message.';
+            floatingSuccess.classList.add('active');
         });
+    });
+    // Allow user to close the floating card by clicking it
+    floatingSuccess.addEventListener('click', function() {
+        floatingSuccess.classList.remove('active');
     });
 } 
