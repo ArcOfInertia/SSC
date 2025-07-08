@@ -1,4 +1,3 @@
-// STI College Lucena SSC Database - Updated with official STI information
 class STIDatabase {
     constructor() {
         this.news = [
