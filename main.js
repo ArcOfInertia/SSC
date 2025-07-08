@@ -1438,18 +1438,35 @@ if (document.readyState === 'loading') {
     highlightActiveNavTab();
 } 
 
-// Contact form floating success handler
+// Contact form floating success handler (AJAX version)
 const contactForm = document.querySelector('.contact-form');
 const floatingSuccess = document.querySelector('.floating-success');
 if (contactForm && floatingSuccess) {
     contactForm.addEventListener('submit', function(e) {
-        setTimeout(function() { // Wait for Formspree redirect/response
-            floatingSuccess.classList.add('active');
-            contactForm.style.display = 'none';
-            setTimeout(function() {
-                floatingSuccess.classList.remove('active');
-                contactForm.style.display = '';
-            }, 4000);
-        }, 100);
+        e.preventDefault();
+        const formData = new FormData(contactForm);
+        fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(response => {
+            if (response.ok) {
+                floatingSuccess.classList.add('active');
+                contactForm.style.display = 'none';
+                setTimeout(function() {
+                    floatingSuccess.classList.remove('active');
+                    contactForm.reset();
+                    contactForm.style.display = '';
+                }, 4000);
+            } else {
+                response.json().then(data => {
+                    alert(data.error || 'There was a problem sending your message.');
+                });
+            }
+        })
+        .catch(() => {
+            alert('There was a problem sending your message.');
+        });
     });
 } 
