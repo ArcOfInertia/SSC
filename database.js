@@ -1,4 +1,3 @@
-// STI College Lucena SSC Database - Updated with official STI information
 class STIDatabase {
     constructor() {
         this.news = [
@@ -158,7 +157,7 @@ This victory showcases the quality of education and training provided by STI Col
                 course: 'BS Culinary Management',
                 year: '4th Year',
                 imageUrl: '../img/team/Lei.jpg',
-                email: 'president@sticollegelucena.edu.ph',
+                email: 'https://www.facebook.com/leishaneezra',
                 description: 'Dedicated leader committed to improving student life and fostering a positive campus environment at STI College Lucena.'
             },
             {
@@ -168,7 +167,7 @@ This victory showcases the quality of education and training provided by STI Col
                 course: 'BS Tourism Management',
                 year: '3rd Year',
                 imageUrl: '../img/team/Gab.jpg',
-                email: 'vicepresident@sticollegelucena.edu.ph',
+                email: 'https://www.facebook.com/gaburielazi',
                 description: 'Passionate about student advocacy and creating opportunities for student growth and development at STI College Lucena.'
             },
             {
@@ -178,7 +177,7 @@ This victory showcases the quality of education and training provided by STI Col
                 course: 'BS Tourism Management',
                 year: '4th Year',
                 imageUrl: '../img/team/Diane.jpg',
-                email: 'secretary@sticollegelucena.edu.ph',
+                email: 'https://www.facebook.com/diane.pauline.saludes',
                 description: 'Organized and efficient in managing council records and communications for STI College Lucena Student Council.'
             },
             {
@@ -188,7 +187,7 @@ This victory showcases the quality of education and training provided by STI Col
                 course: 'BS Culinary Management',
                 year: '3rd Year',
                 imageUrl: '../img/team/Mary.jpg',
-                email: 'treasurer@sticollegelucena.edu.ph',
+                email: 'https://www.facebook.com/marygrace.oca.7',
                 description: 'Responsible financial management ensuring transparency in all STI College Lucena Student Council transactions.'
             },
             {
@@ -198,7 +197,7 @@ This victory showcases the quality of education and training provided by STI Col
                 course: 'BS Accountancy',
                 year: '3rd Year',
                 imageUrl: '../img/team/Andrei.jpg',
-                email: 'auditor@sticollegelucena.edu.ph',
+                email: 'https://www.facebook.com/andrei.villate.3',
                 description: 'Ensuring accountability and proper financial oversight of STI College Lucena Student Council activities.'
             },
             {
@@ -208,7 +207,7 @@ This victory showcases the quality of education and training provided by STI Col
                 course: 'BS Tourism Management',
                 year: '3rd Year',
                 imageUrl: '../img/team/Karl.jpg',
-                email: 'pro@sticollegelucena.edu.ph',
+                email: 'https://www.facebook.com/karlwayne.natividad',
                 description: 'Keeping STI College Lucena students informed about council activities and campus events.'
             },
             {
@@ -218,7 +217,7 @@ This victory showcases the quality of education and training provided by STI Col
                 course: 'BS Business Administration',
                 year: '2nd Year',
                 imageUrl: '../img/team/Daisiree.png',
-                email: 'bsba.rep@sticollegelucena.edu.ph',
+                email: 'https://www.facebook.com/daisireesollestre.coronacion',
                 description: 'Representing the Business Administration students and advocating for their needs and concerns.'
             },
             {
@@ -228,7 +227,7 @@ This victory showcases the quality of education and training provided by STI Col
                 course: 'BS Computer Science',
                 year: '3rd Year',
                 imageUrl: '../img/team/Sean.jpg',
-                email: 'bscs.rep@sticollegelucena.edu.ph',
+                email: 'https://www.facebook.com/seanberry28',
                 description: 'Representing the Computer Science students and ensuring their voices are heard in council decisions.'
             },
             {
@@ -238,7 +237,7 @@ This victory showcases the quality of education and training provided by STI Col
                 course: 'BS Tourism Management',
                 year: '3rd Year',
                 imageUrl: '../img/team/Daniella.jpg',
-                email: 'bstm.rep@sticollegelucena.edu.ph',
+                email: 'https://www.facebook.com/yanie.park.102',
                 description: 'Representing the Tourism Management students and promoting tourism-related activities and events.'
             },
             {
@@ -248,7 +247,7 @@ This victory showcases the quality of education and training provided by STI Col
                 course: 'BS Culinary Management',
                 year: '3rd Year',
                 imageUrl: '../img/team/Sam.png',
-                email: 'bscm.rep@sticollegelucena.edu.ph',
+                email: 'https://www.facebook.com/yanie.park.102',
                 description: 'Representing the Culinary Management students and organizing food-related events and activities.'
             },
             {
@@ -258,7 +257,7 @@ This victory showcases the quality of education and training provided by STI Col
                 course: 'BS Computer Engineering',
                 year: '3rd Year',
                 imageUrl: '../img/team/Ronron.jpg',
-                email: 'bscpe.rep@sticollegelucena.edu.ph',
+                email: 'https://www.facebook.com/katindig.delacruz.3',
                 description: 'Representing the Computer Engineering students and advocating for their technical and academic needs.'
             },
             {
@@ -268,7 +267,7 @@ This victory showcases the quality of education and training provided by STI Col
                 course: 'BS Multimedia Arts',
                 year: '4th Year',
                 imageUrl: '../img/team/Dwight.jpg',
-                email: 'bmma.rep@sticollegelucena.edu.ph',
+                email: 'https://www.facebook.com/kaikai0225',
                 description: 'Representing the Multimedia Arts students and promoting creative and artistic activities on campus.'
             },
             {
@@ -278,7 +277,7 @@ This victory showcases the quality of education and training provided by STI Col
                 course: 'BS Information Technology',
                 year: '4th Year',
                 imageUrl: '../img/team/Hanz (1).png',
-                email: 'bsit.rep@sticollegelucena.edu.ph',
+                email: 'https://www.facebook.com/hanseuuuuu',
                 description: 'Representing the Information Technology students and supporting tech-related initiatives and events.'
             }
         ];
