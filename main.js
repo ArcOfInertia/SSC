@@ -1,3 +1,5 @@
+// Main JavaScript functionality for STI College Lucena SSC website
+
 // Utility functions
 function formatDate(dateString) {
     const date = new Date(dateString);
@@ -1434,4 +1436,20 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', highlightActiveNavTab);
 } else {
     highlightActiveNavTab();
+} 
+
+// Contact form floating success handler
+const contactForm = document.querySelector('.contact-form');
+const floatingSuccess = document.querySelector('.floating-success');
+if (contactForm && floatingSuccess) {
+    contactForm.addEventListener('submit', function(e) {
+        setTimeout(function() { // Wait for Formspree redirect/response
+            floatingSuccess.classList.add('active');
+            contactForm.style.display = 'none';
+            setTimeout(function() {
+                floatingSuccess.classList.remove('active');
+                contactForm.style.display = '';
+            }, 4000);
+        }, 100);
+    });
 } 
