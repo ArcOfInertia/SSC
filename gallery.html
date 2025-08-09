@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - STI College Lucena SSC</title>
+    <meta name="description" content="Explore our photo gallery showcasing campus life, events, and activities at STI College Lucena.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="img/Logo and bg/SSC-modified (1).png" alt="STI College Lucena SSC" class="logo">
+                <span>STI College Lucena SSC</span>
+            </a>
+            
+            <ul class="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About SSC</a></li>
+                <li><a href="officers.html">Officers</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Photo Gallery</h1>
+            <p>Explore our photo gallery showcasing campus life, events, and activities at STI College Lucena.</p>
+        </div>
+    </section>
+
+    <!-- Gallery Filter Section -->
+    <section class="section">
+        <div class="container">
+            <div class="gallery-filter">
+                <div class="filter-controls">
+                    <div class="search-box">
+                        <input type="text" id="gallery-search" placeholder="Search photos..." class="search-input">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Photos</button>
+                        <button class="filter-btn" data-filter="Council Activities">Council Activities</button>
+                        <button class="filter-btn" data-filter="Student Life">Student Life</button>
+                        <button class="filter-btn" data-filter="Community Service">Community Service</button>
+                        <button class="filter-btn" data-filter="Sports">Sports</button>
+                        <button class="filter-btn" data-filter="Achievements">Achievements</button>
+                    </div>
+                    <div class="view-controls">
+                        <button class="view-btn active" data-view="grid">Grid</button>
+                        <button class="view-btn" data-view="masonry">Masonry</button>
+                        <button class="view-btn" data-view="list">List</button>
+                    </div>
+                </div>
+                <div class="gallery-stats">
+                    <span id="gallery-count">0 photos found</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div id="gallery-grid" class="gallery-grid">
+                <!-- Gallery items will be loaded here by JavaScript -->
+            </div>
+            
+            <!-- Loading State -->
+            <div id="gallery-loading" class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading gallery...</p>
+            </div>
+            
+            <!-- Empty State -->
+            <div id="gallery-empty" class="empty-state" style="display: none;">
+                <div class="empty-icon">📷</div>
+                <h3>No Photos Found</h3>
+                <p>No photos match your current filters. Try adjusting your search criteria.</p>
+                <button class="btn btn-primary" onclick="resetGalleryFilters()">Reset Filters</button>
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="text-center" id="load-more-gallery-container" style="display: none;">
+                <button class="btn btn-outline" id="load-more-gallery">Load More Photos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <div class="lightbox-image-container">
+                <img id="lightbox-image" src="" alt="">
+                <div class="lightbox-overlay">
+                    <div class="lightbox-info">
+                        <h3 id="lightbox-title"></h3>
+                        <p id="lightbox-description"></p>
+                        <div class="lightbox-meta">
+                            <span id="lightbox-category"></span>
+                            <span id="lightbox-date"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lightbox-controls">
+                <button class="lightbox-btn" id="lightbox-prev">‹</button>
+                <button class="lightbox-btn" id="lightbox-next">›</button>
+            </div>
+            <div class="lightbox-thumbnails" id="lightbox-thumbnails">
+                <!-- Thumbnails will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>STI College Lucena SSC</h3>
+                <p>
+                    The official student council of STI College Lucena, dedicated to serving students 
+                    and fostering a vibrant campus community.
+                </p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/STICollegeLucenaSSC" target="_blank" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Email">📧</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">About SSC</a></li>
+                    <li><a href="officers.html">Officers</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <div>
+                    <p>STI College Lucena</p>
+                    <p>Lucena City, Quezon Province, Philippines</p>
+                    <p>Email: lucena@sti.edu</p>
+                    <p>Phone: (042) 373-XXXX</p>
+                    <p>Website: <a href="https://www.sti.edu" target="_blank">www.sti.edu</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 STI College Lucena Student Council. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="database.js"></script>
+    <script src="main.js"></script>
+    <script src="chatbot.js"></script>
+
+    <!-- Chat Bot -->
+    <div class="chat-bot-container">
+        <!-- Floating Chat Icon -->
+        <div class="chat-bot-icon" id="chatBotIcon">
+            <div class="chat-bot-avatar">
+                <img src="img/Logo and bg/SSC-modified (1).png" alt="SSC Assistant" class="chat-bot-logo">
+            </div>
+            <div class="chat-bot-notification" id="chatNotification">1</div>
+        </div>
+
+        <!-- Chat Window -->
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-bot-avatar-small">
+                        <img src="img/Logo and bg/SSC-modified (1).png" alt="SSC Assistant" class="chat-bot-logo-small">
+                    </div>
+                    <div>
+                        <h4>STI College Assistant</h4>
+                        <p class="chat-status">Online</p>
+                    </div>
+                </div>
+                <button class="chat-close-btn" id="chatCloseBtn">×</button>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be added here -->
+            </div>
+            
+            <div class="chat-input-container">
+                <input type="text" id="chatInput" placeholder="Ask me anything about STI College..." class="chat-input">
+                <button id="chatSendBtn" class="chat-send-btn">
+                    <span>📤</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

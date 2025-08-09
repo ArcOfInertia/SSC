@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Updates - STI College Lucena SSC</title>
+    <meta name="description" content="Stay informed with the latest news, announcements, and updates from STI College Lucena Student Council.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="img/Logo and bg/SSC-modified (1).png" alt="STI College Lucena SSC" class="logo">
+                <span>STI College Lucena SSC</span>
+            </a>
+            
+            <ul class="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About SSC</a></li>
+                <li><a href="officers.html">Officers</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>News & Updates</h1>
+            <p>Stay informed with the latest news, announcements, and updates from STI College Lucena Student Council.</p>
+        </div>
+    </section>
+
+    <!-- News Filter Section -->
+    <section class="section">
+        <div class="container">
+            <div class="news-filter">
+                <div class="filter-controls">
+                    <div class="search-box">
+                        <input type="text" id="news-search" placeholder="Search news..." class="search-input">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All News</button>
+                        <button class="filter-btn" data-filter="announcements">Announcements</button>
+                        <button class="filter-btn" data-filter="achievements">Achievements</button>
+                        <button class="filter-btn" data-filter="events">Event Updates</button>
+                    </div>
+                    <div class="sort-controls">
+                        <select id="news-sort" class="sort-select">
+                            <option value="latest">Latest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="popular">Most Popular</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="news-stats">
+                    <span id="news-count">0 articles found</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured News Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Featured News</h2>
+            <div id="featured-news" class="featured-news">
+                <!-- Featured news will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- News Grid Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Latest News</h2>
+            <div id="news-grid" class="news-grid">
+                <!-- News will be loaded here by JavaScript -->
+            </div>
+            
+            <!-- Loading State -->
+            <div id="news-loading" class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading news...</p>
+            </div>
+            
+            <!-- Empty State -->
+            <div id="news-empty" class="empty-state" style="display: none;">
+                <div class="empty-icon">📰</div>
+                <h3>No News Found</h3>
+                <p>No news articles match your current filters. Try adjusting your search criteria.</p>
+                <button class="btn btn-primary" onclick="resetNewsFilters()">Reset Filters</button>
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="text-center" id="load-more-container" style="display: none;">
+                <button class="btn btn-outline" id="load-more-news">Load More News</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Detail Modal -->
+    <div id="news-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <div class="news-detail">
+                    <div class="news-detail-image">
+                        <img id="modal-news-image" src="" alt="">
+                    </div>
+                    <div class="news-detail-content">
+                        <div class="news-category-badge" id="modal-news-category"></div>
+                        <h2 id="modal-news-title"></h2>
+                        <div class="news-meta-large" id="modal-news-meta"></div>
+                        <div class="news-content-large" id="modal-news-content"></div>
+                        <div class="news-actions">
+                            <button class="btn btn-primary" id="modal-news-share">Share Article</button>
+                            <button class="btn btn-secondary" id="modal-news-print">Print Article</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>STI College Lucena SSC</h3>
+                <p>
+                    The official student council of STI College Lucena, dedicated to serving students 
+                    and fostering a vibrant campus community.
+                </p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/STICollegeLucenaSSC" target="_blank" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Email">📧</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">About SSC</a></li>
+                    <li><a href="officers.html">Officers</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <div>
+                    <p>STI College Lucena</p>
+                    <p>Lucena City, Quezon Province, Philippines</p>
+                    <p>Email: lucena@sti.edu</p>
+                    <p>Phone: (042) 373-XXXX</p>
+                    <p>Website: <a href="https://www.sti.edu" target="_blank">www.sti.edu</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 STI College Lucena Student Council. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="database.js"></script>
+    <script src="main.js"></script>
+    <script src="chatbot.js"></script>
+
+    <!-- Chat Bot -->
+    <div class="chat-bot-container">
+        <!-- Floating Chat Icon -->
+        <div class="chat-bot-icon" id="chatBotIcon">
+            <div class="chat-bot-avatar">
+                <img src="img/Logo and bg/SSC-modified (1).png" alt="SSC Assistant" class="chat-bot-logo">
+            </div>
+            <div class="chat-bot-notification" id="chatNotification">1</div>
+        </div>
+
+        <!-- Chat Window -->
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-bot-avatar-small">
+                        <img src="img/Logo and bg/SSC-modified (1).png" alt="SSC Assistant" class="chat-bot-logo-small">
+                    </div>
+                    <div>
+                        <h4>STI College Assistant</h4>
+                        <p class="chat-status">Online</p>
+                    </div>
+                </div>
+                <button class="chat-close-btn" id="chatCloseBtn">×</button>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be added here -->
+            </div>
+            
+            <div class="chat-input-container">
+                <input type="text" id="chatInput" placeholder="Ask me anything about STI College..." class="chat-input">
+                <button id="chatSendBtn" class="chat-send-btn">
+                    <span>📤</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
