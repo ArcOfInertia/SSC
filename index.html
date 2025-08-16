@@ -197,7 +197,34 @@
         </div>
     </footer>
 
+    <!-- Chat Bot -->
+    <div class="chat-bot-icon" id="chatBotIcon">
+        <span>💬</span>
+        <div class="chat-notification" id="chatNotification">1</div>
+    </div>
+
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <h3>STI College Assistant</h3>
+            <button class="chat-close-btn" id="chatCloseBtn">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <!-- Messages will be loaded here -->
+        </div>
+        <div class="chat-input-container">
+            <input type="text" id="chatInput" placeholder="Type your message..." maxlength="500">
+            <button id="chatSendBtn">Send</button>
+        </div>
+    </div>
+
     <script src="database.js"></script>
     <script src="main.js"></script>
+    <script src="chatbot.js"></script>
+    <script>
+        // Initialize the chat bot
+        document.addEventListener('DOMContentLoaded', function() {
+            window.chatBot = new STIChatBot();
+        });
+    </script>
 </body>
 </html> 

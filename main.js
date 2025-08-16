@@ -373,7 +373,7 @@ function initCardAnimations() {
     }, {
         threshold: 0.1
     });
-    
+     
     cards.forEach(card => {
         observer.observe(card);
     });
