@@ -74,7 +74,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
-                <div class="form-success floating-success">Thank you for reaching out! We'll get back to you soon.</div>
+                <div class="form-success floating-success" style="display:none;">Thank you for reaching out! We'll get back to you soon.</div>
             </div>
         </div>
     </section>
@@ -121,7 +121,7 @@
                     <p>STI College Lucena</p>
                     <p>Lucena City, Quezon Province, Philippines</p>
                     <p>Email: lucena@sti.edu</p>
-                    <p>Phone: (042) 373-XXXX</p>
+                    <p>Phone: (+63)927 300 0460</p>
                     <p>Website: <a href="https://www.sti.edu" target="_blank">www.sti.edu</a></p>
                 </div>
             </div>
@@ -132,44 +132,5 @@
     </footer>
 
     <script src="main.js"></script>
-    <script src="chatbot.js"></script>
-
-    <!-- Chat Bot -->
-    <div class="chat-bot-container">
-        <!-- Floating Chat Icon -->
-        <div class="chat-bot-icon" id="chatBotIcon">
-            <div class="chat-bot-avatar">
-                <img src="img/Logo and bg/SSC-modified (1).png" alt="SSC Assistant" class="chat-bot-logo">
-            </div>
-            <div class="chat-bot-notification" id="chatNotification">1</div>
-        </div>
-
-        <!-- Chat Window -->
-        <div class="chat-window" id="chatWindow">
-            <div class="chat-header">
-                <div class="chat-header-info">
-                    <div class="chat-bot-avatar-small">
-                        <img src="img/Logo and bg/SSC-modified (1).png" alt="SSC Assistant" class="chat-bot-logo-small">
-                    </div>
-                    <div>
-                        <h4>STI College Assistant</h4>
-                        <p class="chat-status">Online</p>
-                    </div>
-                </div>
-                <button class="chat-close-btn" id="chatCloseBtn">×</button>
-            </div>
-            
-            <div class="chat-messages" id="chatMessages">
-                <!-- Messages will be added here -->
-            </div>
-            
-            <div class="chat-input-container">
-                <input type="text" id="chatInput" placeholder="Ask me anything about STI College..." class="chat-input">
-                <button id="chatSendBtn" class="chat-send-btn">
-                    <span>📤</span>
-                </button>
-            </div>
-        </div>
-    </div>
 </body>
 </html> 
