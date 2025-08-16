@@ -50,6 +50,15 @@
         </div>
     </section>
 
+    <!-- Debug Chatbot Section -->
+    <div style="text-align: center; padding: 20px; background: #f8fafc; margin: 20px 0; border: 2px solid #e5e7eb; border-radius: 8px;">
+        <h3>Chatbot Debug</h3>
+        <button onclick="testChatbot()" style="background: #1e40af; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 16px; margin: 5px;">Test Chatbot</button>
+        <button onclick="showChatbot()" style="background: #059669; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 16px; margin: 5px;">Show Chatbot</button>
+        <button onclick="hideChatbot()" style="background: #dc2626; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 16px; margin: 5px;">Hide Chatbot</button>
+        <div id="debug-info" style="margin-top: 15px; padding: 10px; background: white; border-radius: 5px; font-family: monospace; text-align: left;"></div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -122,6 +131,45 @@
         document.addEventListener('DOMContentLoaded', function() {
             window.chatBot = new STIChatBot();
         });
+
+        // Debug functions
+        function testChatbot() {
+            const debugInfo = document.getElementById('debug-info');
+            const icon = document.getElementById('chatBotIcon');
+            const window = document.getElementById('chatWindow');
+            const messages = document.getElementById('chatMessages');
+            
+            debugInfo.innerHTML = `
+                <strong>Chatbot Elements Status:</strong><br>
+                Chat Icon: ${icon ? 'Found ✓' : 'Missing ✗'}<br>
+                Chat Window: ${window ? 'Found ✓' : 'Missing ✗'}<br>
+                Chat Messages: ${messages ? 'Found ✓' : 'Missing ✗'}<br>
+                <br>
+                <strong>Chat Icon Styles:</strong><br>
+                Display: ${icon ? getComputedStyle(icon).display : 'N/A'}<br>
+                Position: ${icon ? getComputedStyle(icon).position : 'N/A'}<br>
+                Z-index: ${icon ? getComputedStyle(icon).zIndex : 'N/A'}<br>
+                <br>
+                <strong>Window Chatbot Instance:</strong><br>
+                ${window.chatBot ? 'Initialized ✓' : 'Not Initialized ✗'}
+            `;
+        }
+
+        function showChatbot() {
+            const window = document.getElementById('chatWindow');
+            if (window) {
+                window.style.display = 'flex';
+                console.log('Chatbot window shown manually');
+            }
+        }
+
+        function hideChatbot() {
+            const window = document.getElementById('chatWindow');
+            if (window) {
+                window.style.display = 'none';
+                console.log('Chatbot window hidden manually');
+            }
+        }
     </script>
 </body>
 </html> 
