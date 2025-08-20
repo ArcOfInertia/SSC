@@ -2698,8 +2698,10 @@ body {
     cursor: pointer;
     box-shadow: 0 4px 20px rgba(30, 64, 175, 0.3);
     transition: all 0.3s ease;
-    position: relative;
-    z-index: 1001;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10001;
 }
 
 .chat-bot-icon:hover {
@@ -2747,7 +2749,7 @@ body {
     display: none;
     flex-direction: column;
     overflow: hidden;
-    z-index: 1000;
+    z-index: 10002;
     border: 1px solid #e5e7eb;
 }
 

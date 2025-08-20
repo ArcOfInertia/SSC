@@ -1,6 +1,38 @@
 // STI College Chat Bot
+// Ensure chat UI exists in the DOM
+function ensureChatMarkup() {
+    if (!document.getElementById('chatBotIcon')) {
+        const icon = document.createElement('div');
+        icon.className = 'chat-bot-icon';
+        icon.id = 'chatBotIcon';
+        icon.innerHTML = '<span>💬</span><div class="chat-notification" id="chatNotification">1</div>';
+        document.body.appendChild(icon);
+    }
+    if (!document.getElementById('chatWindow')) {
+        const win = document.createElement('div');
+        win.className = 'chat-window';
+        win.id = 'chatWindow';
+        win.innerHTML = `
+            <div class="chat-header">
+                <h3>STI College Assistant</h3>
+                <button class="chat-close-btn" id="chatCloseBtn">×</button>
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input-container">
+                <input type="text" id="chatInput" placeholder="Type your message..." maxlength="500">
+                <button id="chatSendBtn">Send</button>
+            </div>
+        `;
+        document.body.appendChild(win);
+    }
+}
+
 class STIChatBot {
     constructor() {
+        if (window.__stiChatBotInstance) {
+            return window.__stiChatBotInstance;
+        }
+        ensureChatMarkup();
         this.isOpen = false;
         this.isTyping = false;
         this.conversationHistory = [];
@@ -8,9 +40,12 @@ class STIChatBot {
         this.bindEvents();
         this.loadChatState();
         this.showWelcomeMessage();
+        window.__stiChatBotInstance = this;
     }
 
     initializeElements() {
+        // Ensure markup present then capture references
+        ensureChatMarkup();
         this.chatBotIcon = document.getElementById('chatBotIcon');
         this.chatWindow = document.getElementById('chatWindow');
         this.chatCloseBtn = document.getElementById('chatCloseBtn');
@@ -28,17 +63,25 @@ class STIChatBot {
     }
 
     bindEvents() {
-        this.chatBotIcon.addEventListener('click', () => this.toggleChat());
-        this.chatCloseBtn.addEventListener('click', () => this.closeChat());
-        this.chatSendBtn.addEventListener('click', () => this.sendMessage());
-        this.chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.sendMessage();
-        });
+        if (this.chatBotIcon) {
+            this.chatBotIcon.addEventListener('click', () => this.toggleChat(), { once: false });
+        }
+        if (this.chatCloseBtn) {
+            this.chatCloseBtn.addEventListener('click', () => this.closeChat(), { once: false });
+        }
+        if (this.chatSendBtn) {
+            this.chatSendBtn.addEventListener('click', () => this.sendMessage(), { once: false });
+        }
+        if (this.chatInput) {
+            this.chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') this.sendMessage();
+            });
+        }
 
         // Close chat when clicking outside
         document.addEventListener('click', (e) => {
-            if (!this.chatWindow.contains(e.target) && 
-                !this.chatBotIcon.contains(e.target) && 
+            if (this.chatWindow && !this.chatWindow.contains(e.target) && 
+                this.chatBotIcon && !this.chatBotIcon.contains(e.target) && 
                 this.isOpen) {
                 this.closeChat();
             }
@@ -55,20 +98,26 @@ class STIChatBot {
 
     openChat() {
         this.isOpen = true;
-        this.chatWindow.classList.add('active');
-        this.chatNotification.style.display = 'none';
-        this.chatInput.focus();
+        if (this.chatWindow) this.chatWindow.classList.add('active');
+        if (this.chatNotification) this.chatNotification.style.display = 'none';
+        if (this.chatInput) this.chatInput.focus();
         this.scrollToBottom();
         this.saveChatState();
     }
 
     closeChat() {
         this.isOpen = false;
-        this.chatWindow.classList.remove('active');
+        if (this.chatWindow) this.chatWindow.classList.remove('active');
         this.saveChatState();
     }
 
     showWelcomeMessage() {
+        // Avoid duplicate welcome if conversation is already restored
+        const hasHistory = Array.isArray(this.conversationHistory) && this.conversationHistory.length > 0;
+        const hasMessages = this.chatMessages && this.chatMessages.children && this.chatMessages.children.length > 0;
+        if (hasHistory || hasMessages) {
+            return;
+        }
         const welcomeMessage = {
             type: 'bot',
             content: `Hello! I'm your STI College Lucena Assistant. 🎓
@@ -142,6 +191,7 @@ How can I assist you today?`,
             messageElement.appendChild(quickRepliesContainer);
         }
         
+        if (!this.chatMessages) return;
         this.chatMessages.appendChild(messageElement);
         this.scrollToBottom();
         
@@ -187,6 +237,7 @@ How can I assist you today?`,
     }
 
     showTypingIndicator() {
+        if (!this.chatMessages) return;
         this.isTyping = true;
         const typingElement = document.createElement('div');
         typingElement.className = 'chat-message bot';
@@ -390,7 +441,9 @@ Or you can try asking something like "What programs do you offer?" or "Tell me a
 
     scrollToBottom() {
         setTimeout(() => {
-            this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+            if (this.chatMessages) {
+                this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+            }
         }, 100);
     }
 
@@ -421,21 +474,31 @@ Or you can try asking something like "What programs do you offer?" or "Tell me a
     // Show notification when chat is closed
     showNotification() {
         if (!this.isOpen) {
-            this.chatNotification.style.display = 'flex';
+            if (this.chatNotification) this.chatNotification.style.display = 'flex';
         }
     }
 }
 
-// Initialize chat bot when DOM is loaded
+// Initialize chat bot when DOM is loaded (singleton)
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Initializing STI Chat Bot...');
-    const chatBot = new STIChatBot();
-    console.log('Chat Bot initialized successfully');
-    
-    // Show notification after 5 seconds if chat hasn't been opened
-    setTimeout(() => {
-        if (!chatBot.isOpen) {
-            chatBot.showNotification();
+    try {
+        ensureChatMarkup();
+        if (!window.__stiChatBotInstance) {
+            console.log('Initializing STI Chat Bot...');
+            const instance = new STIChatBot();
+            window.__stiChatBotInstance = instance;
+            window.chatBot = instance;
+            console.log('Chat Bot initialized successfully');
+            setTimeout(() => {
+                if (!instance.isOpen) {
+                    instance.showNotification();
+                }
+            }, 5000);
+        } else {
+            // Ensure markup visible even if already initialized
+            ensureChatMarkup();
         }
-    }, 5000);
-}); 
+    } catch (err) {
+        console.error('Failed to initialize chat bot:', err);
+    }
+});
